@@ -267,6 +267,10 @@ public class DevicePrinterPrinter implements DevicePrinter {
                 aset.add(OrientationRequested.PORTRAIT);
                 aset.add(new JobName(AppLocal.APP_NAME + " - Document", null));
                 aset.add(media);
+                MediaSize mediaSize = MediaSize.getMediaSizeForName(MediaSizeName.NA_LEGAL);
+                float size = mediaSize.getSize(MediaSize.INCH);
+                aset.add(new MediaPrintableArea(0, 0, size, size, MediaPrintableArea.INCH));
+               
 
                 DocPrintJob printjob = ps.createPrintJob();
                 Doc doc = new SimpleDoc(new PrintableBasicTicket(m_ticketcurrent, imageable_x, imageable_y, imageable_width, imageable_height), DocFlavor.SERVICE_FORMATTED.PRINTABLE, null);
